@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.laioffer.tinnews.R;
 import com.laioffer.tinnews.databinding.SearchNewsItemBinding;
 import com.laioffer.tinnews.model.Article;
+import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -38,6 +39,8 @@ public class SearchNewsAdapter extends RecyclerView.Adapter<SearchNewsAdapter.Se
     public void onBindViewHolder(@NonNull SearchNewsAdapter.SearchNewsViewHolder holder, int position) {
         Article article = articles.get(position);
         holder.itemTitleTextView.setText(article.title);
+        // Picasso provides cache function. it is a LRU cache.
+        Picasso.get().load(article.urlToImage).resize(200, 200).into(holder.itemImageView);
     }
 
     @Override
