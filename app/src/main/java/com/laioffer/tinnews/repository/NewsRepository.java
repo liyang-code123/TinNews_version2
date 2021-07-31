@@ -23,6 +23,8 @@ public class NewsRepository {
         MutableLiveData<NewsResponse> topHeadlinesLiveData = new MutableLiveData<>();
         newsApi.getTopHeadlines(country)
                 .enqueue(new Callback<NewsResponse>() {
+                    // not all callback function are async. if the call back is in the different thread;
+                    // it is async. otherwise, it is sync.
                     @Override
                     public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
                         if (response.isSuccessful()) {

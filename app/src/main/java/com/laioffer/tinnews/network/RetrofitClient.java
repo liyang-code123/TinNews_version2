@@ -1,5 +1,6 @@
 package com.laioffer.tinnews.network;
 
+import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.laioffer.tinnews.Config;
 
 import java.io.IOException;
@@ -18,6 +19,7 @@ public class RetrofitClient {
     public static Retrofit newInstance() {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(new HeaderInterceptor())
+                .addNetworkInterceptor(new StethoInterceptor())
                 .build();
         return new Retrofit.Builder()
                 .baseUrl(BASE_URL)

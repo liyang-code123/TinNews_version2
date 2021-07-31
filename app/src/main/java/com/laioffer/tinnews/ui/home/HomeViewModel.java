@@ -9,6 +9,8 @@ import com.laioffer.tinnews.model.NewsResponse;
 import com.laioffer.tinnews.repository.NewsRepository;
 
 public class HomeViewModel extends ViewModel {
+
+    // view model depends on repository.
     private final NewsRepository repository;
     private final MutableLiveData<String> countryInput = new MutableLiveData<>();
 
